@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root{
+    --font-roboto: 'Roboto', sans-serif;
+
+    --clr-bg-msg-container: #F3F3F3;
+    --clr-bg-msg-normal: #FFF;
+    --clr-bg-msg-status: #DCDCDC;
+    --clr-bg-msg-reservado: #FFDEDE;
+
+    --clr-font-horario: #AAAAAA;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-family: var(--font-roboto);
+    font-size: 10px;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+}

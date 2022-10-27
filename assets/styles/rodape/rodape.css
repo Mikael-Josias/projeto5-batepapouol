@@ -1,8 +1,5 @@
 
 .rodape{
-    position: absolute;
-    bottom: 0;
-
     display: flex;
     justify-items: flex-start;
     align-items: center;

@@ -1,0 +1,25 @@
+
+.mensagem--normal, .mensagem--status, .mensagem--reservado{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+    font-size: 1.4rem;
+
+    margin-bottom: .4rem;
+    padding: 1.3rem .8rem;
+
+    width: 100%;
+}
+
+.mensagem--normal{
+    background-color: var(--clr-bg-msg-normal);
+}
+
+.mensagem--status{
+    background-color: var(--clr-bg-msg-status);
+}
+
+.mensagem--reservado{
+    background-color: var(--clr-bg-msg-reservado);
+}

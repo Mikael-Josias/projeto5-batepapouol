@@ -1,0 +1,21 @@
+
+.login{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #FFF;
+
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+}
+
+.login img{
+    margin-bottom: 9.4rem;
+}

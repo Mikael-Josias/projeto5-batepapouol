@@ -1,0 +1,15 @@
+
+.login__entrar{
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--clr-font-btn-entrar);
+
+    background-color: var(--clr-bg-btn-entrar);
+    border: none;
+    border-radius: .9rem;
+
+    height: 4.5rem;
+    width: 11rem;
+
+    cursor: pointer;
+}

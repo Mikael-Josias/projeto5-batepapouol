@@ -7,8 +7,11 @@
     --clr-bg-msg-normal: #FFF;
     --clr-bg-msg-status: #DCDCDC;
     --clr-bg-msg-reservado: #FFDEDE;
+    --clr-bg-btn-entrar: #E7E7E7;
 
     --clr-font-horario: #AAAAAA;
+    --clr-font-btn-entrar: #696969;
+    --clr-bd-input: #AEAEAE;
 }
 
 *{

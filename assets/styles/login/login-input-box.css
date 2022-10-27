@@ -1,0 +1,24 @@
+
+.login__input-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 12rem;
+}
+
+.login__input-box input{
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-align: center;
+
+    border: .1rem solid var(--clr-bd-input);
+    border-radius: .4rem;
+
+    height: 5.4rem;
+}
+
+.login__input-box input:focus{
+    outline: none;
+}

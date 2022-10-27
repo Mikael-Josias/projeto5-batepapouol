@@ -1,0 +1,28 @@
+
+.rodape__input-box{
+    height: 100%;
+    width: calc(100% - 2.6rem);
+}
+
+.rodape__input-box input{
+    font-size: 1.8rem;
+    font-weight: 400;
+
+    color: #000;
+    border: none;
+
+    height: 100%;
+    width: 100%;
+}
+
+.rodape__input-box input::placeholder,
+.rodape__input-box input:-moz-placeholder,
+.rodape__input-box input::-moz-placeholder{
+    color: #000;
+    opacity: 1;
+    font-style: italic;
+}
+
+.rodape__input-box input:focus{
+    outline: none;
+}

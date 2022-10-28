@@ -25,8 +25,8 @@ const mostrarChat = () => {
 const enviarUsuario = () => {
 
     axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", usuario)
-    .then(mostrarChat())
-    .catch(() => {console.log("erro")});
+    .then(mostrarChat)
+    .catch(() => {alert("Usuário já cadastrado");});
 }
 
 btnEntrar.addEventListener("click", () => {

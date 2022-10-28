@@ -27,3 +27,7 @@ body{
     width: 100vw;
     height: 100vh;
 }
+
+section.esconder{
+    display: none;
+}

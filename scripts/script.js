@@ -16,10 +16,16 @@ const validarInput = () => {
     return false;
 };
 
+const mostrarChat = () => {
+    const login = document.querySelector(".login");
+
+    login.classList.add("esconder");
+}
+
 const enviarUsuario = () => {
 
     axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", usuario)
-    .then(() => {console.log("sucesso")})
+    .then(mostrarChat())
     .catch(() => {console.log("erro")});
 }
 

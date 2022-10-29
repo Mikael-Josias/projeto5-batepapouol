@@ -1,5 +1,6 @@
 
 let logado = false;
+let esperandoResposta = false;
 
 let usuario = {
     name: ""
@@ -30,7 +31,10 @@ function enviarUsuario() {
             usuario.name = input.value;
 
             axios.post("https://mock-api.driven.com.br/api/v6/uol/participants ", usuario)
-            .then(() => {console.log("Logado");})
+            .then(() => {
+                console.log("Logado");
+                setInterval(enviandoStatusUsuario, 5000);
+            })
             .catch((err) => {
                 alert(`Erro ${err.response.status}: Usuário já cadastrado`);
                 logado = false;
@@ -43,3 +47,9 @@ function enviarUsuario() {
 }
 
 document.querySelector(".login__entrar").addEventListener("click", enviarUsuario);
+
+function enviandoStatusUsuario() {
+    axios.post("https://mock-api.driven.com.br/api/v6/uol/status", usuario);
+}
+
+//======================ENVIAR MENSAGEM AO SERVIDOR=======================//

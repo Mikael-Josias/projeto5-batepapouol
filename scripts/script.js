@@ -1,91 +1,45 @@
 
-let esperandoPromisse = false;
-const btnEntrar = document.querySelector(".login__entrar");
+let logado = false;
 
-const btnEviarMensagem = document.querySelector("#btnEnviar");
-
-let usuario = "";
+let usuario = {
+    name: ""
+};
 
 let mensagem = {
-    from: "",
-	to: "",
-	text: "",
-	type: ""
-}
+    from: usuario.name,
+    to: "Todos",
+    text: "",
+    type: "",
+};
 
-const validarInput = (input) => {
+//====================ENVIAR USUÁRIO AO SERVIDOR==================//
 
+function verificarInput(input) {
     if (input.value.trim() !== "" && input.value !== undefined) {
         return true;
     }
 
-    return false
+    return false;
 }
 
-const logar = () => {
-    const login = document.querySelector(".login");
+function enviarUsuario() {
+    const input = document.querySelector("#inputUser");
+    if (verificarInput(input)) {
+        if (!logado) {
+            logado = true;
+            usuario.name = input.value;
 
-    login.classList.add("esconder");
-}
-
-const enviarUsuario = () => {
-
-    if (validarInput(document.querySelector("#inputUser"))) {
-        
-        usuario = {
-            name: document.querySelector("#inputUser").value,
-        }
-        
-        if (!esperandoPromisse) {
-            esperandoPromisse = true;
-
-            axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", usuario)
-            .then(logar)
-            .catch((erro) => {
-                alert(`Erro ${erro.response.status}: Nome de usuário já cadastrado!`);
-            })
-            .then(() => {esperandoPromisse = false;});
+            axios.post("https://mock-api.driven.com.br/api/v6/uol/participants ", usuario)
+            .then(() => {console.log("Logado");})
+            .catch((err) => {
+                alert(`Erro ${err.response.status}: Usuário já cadastrado`);
+                logado = false;
+            });
         }
     }else{
-        alert(`Digite um nome de usuário para entrar!`);
+
+        alert("Erro: Digite um nome de usuário para entrar!")
     }
 }
 
-btnEntrar.addEventListener("click", enviarUsuario);
-
-//===========================================================//
-
-const buscarMensagens = () => {
-    
-    axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
-    .then((prom) => {
-        console.log(prom)
-    })
-    .catch(() => {alert("Erro")});
-}
-
-const carregarMensagens = (mensagens) => {
-    console.log(mensagens);
-}
-
-const enviarMensagem = ({from, to, text, type}) => {
-    let mensagem = {
-        from: from,
-        to: to,
-        text: text,
-        type: type,
-        time: "01:02:03"
-    }
-
-    axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", mensagem)
-    .then(() => {
-        console.log("Mensagem Enviada");
-    })
-    .catch(() => {
-        console.log("Mensagem deu Erro");
-    });
-}
-
-btnEviarMensagem.addEventListener("click", () => {
-
-});
+document.querySelector(".login__entrar").addEventListener("click", enviarUsuario);

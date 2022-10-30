@@ -1,4 +1,6 @@
 
+const container = document.querySelector(".container");
+
 let logado = false;
 let esperandoResposta = false;
 
@@ -41,8 +43,8 @@ function enviarUsuario() {
             .then(() => {
                 console.log("Logado");
                 setInterval(enviandoStatusUsuario, 5000);
-                enviarMensagem({text: "entra na sala..."});
-                pegarMensagens();
+                enviarMensagem({text: "entra na sala...", type: "status"});
+                setInterval(pegarMensagens, 3000);
                 mostrarChat();
             })
             .catch((err) => {
@@ -89,6 +91,7 @@ function pegarMensagens() {
     .then((mensagens) => {
         mensagensChat = mensagens.data;
 
+        container.innerHTML = "";
         mensagensChat.forEach(msg => {
             montarMensagem(msg);
         });
@@ -96,7 +99,6 @@ function pegarMensagens() {
 }
 
 function montarMensagem({from, text, time, to, type}){
-    const container = document.querySelector(".container");
 
     let divMsg = document.createElement("div");
     divMsg.classList.add(`mensagem--${type}`);
@@ -115,8 +117,14 @@ function montarMensagem({from, text, time, to, type}){
     if (type === "private_message" || type === "message") {
         let pText = document.createElement("p");
         pText.innerHTML = text;
-        divMsg.appendChild(pText);
+
+        if (type === "message") {
+            divMsg.appendChild(pText);
+        }
     }
 
-    container.appendChild(divMsg);
+    if ((type === "message" || type === "status") && (to === usuario.name || to === "Todos")) {
+    
+        container.appendChild(divMsg);   
+    }
 }

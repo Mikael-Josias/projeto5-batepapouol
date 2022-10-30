@@ -68,9 +68,9 @@ function enviandoStatusUsuario() {
 
 function enviarMensagem({to = "Todos", text = "",type = "message"}) {
     const input = document.querySelector("#inputMensagem");
-    console.log("1");
+    
     if (verificarInput(input) || text !== "") {
-        console.log("2");
+        
         mensagem.from = usuario.name;
         mensagem.to = to;
         mensagem.text = text === ""? input.value: text;
@@ -78,7 +78,7 @@ function enviarMensagem({to = "Todos", text = "",type = "message"}) {
 
         if (!esperandoResposta) {
             esperandoResposta = true;
-            console.log("3");
+
             axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", mensagem)
             .then(() => {console.log("Enviado"); esperandoResposta = false;})
             .catch(() => {console.log("Erro"); esperandoResposta = false;});
@@ -95,7 +95,12 @@ function pegarMensagens() {
         mensagensChat.forEach(msg => {
             montarMensagem(msg);
         });
+
+        let ultimaMensagem = container.lastElementChild;
+        ultimaMensagem.scrollIntoView();
+
     }).catch((err) => {console.log(`Erro ${err.response.status}: Não foi possivel carregar as mensagens`)});
+
 }
 
 function montarMensagem({from, text, time, to, type}){
@@ -128,6 +133,7 @@ function montarMensagem({from, text, time, to, type}){
     
         container.appendChild(divMsg);   
     }
+
 }
 
 document.querySelector("#btnEnviar").addEventListener("click", () => {

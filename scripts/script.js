@@ -13,6 +13,8 @@ let mensagem = {
     type: "",
 };
 
+let mensagensChat = [];
+
 //====================ENVIAR USUÁRIO AO SERVIDOR==================//
 
 function verificarInput(input) {
@@ -21,6 +23,11 @@ function verificarInput(input) {
     }
 
     return false;
+}
+
+function mostrarChat() {
+    const login = document.querySelector(".login");
+    login.classList.add("esconder");
 }
 
 function enviarUsuario() {
@@ -35,6 +42,8 @@ function enviarUsuario() {
                 console.log("Logado");
                 setInterval(enviandoStatusUsuario, 5000);
                 enviarMensagem({text: "entra na sala..."});
+                pegarMensagens();
+                mostrarChat();
             })
             .catch((err) => {
                 alert(`Erro ${err.response.status}: Usuário já cadastrado`);
@@ -73,4 +82,11 @@ function enviarMensagem({to = "Todos", text = "",type = "message"}) {
             .catch(() => {console.log("Erro"); esperandoResposta = false;});
         }
     }
+}
+
+function pegarMensagens() {
+    axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
+    .then((mensagens) => {
+        console.log(mensagens.data);
+    }).catch(() => {console.log("Deu Erro!")});
 }

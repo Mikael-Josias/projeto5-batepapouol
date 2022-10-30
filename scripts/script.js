@@ -34,6 +34,7 @@ function enviarUsuario() {
             .then(() => {
                 console.log("Logado");
                 setInterval(enviandoStatusUsuario, 5000);
+                enviarMensagem({text: "entra na sala..."});
             })
             .catch((err) => {
                 alert(`Erro ${err.response.status}: Usuário já cadastrado`);
@@ -53,3 +54,23 @@ function enviandoStatusUsuario() {
 }
 
 //======================ENVIAR MENSAGEM AO SERVIDOR=======================//
+
+function enviarMensagem({to = "Todos", text = "",type = "message"}) {
+    const input = document.querySelector("#inputMensagem");
+    console.log("1");
+    if (verificarInput(input) || text !== "") {
+        console.log("2");
+        mensagem.from = usuario.name;
+        mensagem.to = to;
+        mensagem.text = text === ""? input.value: text;
+        mensagem.type = type;
+
+        if (!esperandoResposta) {
+            esperandoResposta = true;
+            console.log("3");
+            axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", mensagem)
+            .then(() => {console.log("Enviado"); esperandoResposta = false;})
+            .catch(() => {console.log("Erro"); esperandoResposta = false;});
+        }
+    }
+}

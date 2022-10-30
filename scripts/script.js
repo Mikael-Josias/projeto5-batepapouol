@@ -87,6 +87,36 @@ function enviarMensagem({to = "Todos", text = "",type = "message"}) {
 function pegarMensagens() {
     axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
     .then((mensagens) => {
-        console.log(mensagens.data);
-    }).catch(() => {console.log("Deu Erro!")});
+        mensagensChat = mensagens.data;
+
+        mensagensChat.forEach(msg => {
+            montarMensagem(msg);
+        });
+    }).catch((err) => {console.log(`Erro ${err.response.status}: Não foi possivel carregar as mensagens`)});
+}
+
+function montarMensagem({from, text, time, to, type}){
+    const container = document.querySelector(".container");
+
+    let divMsg = document.createElement("div");
+    divMsg.classList.add(`mensagem--${type}`);
+    divMsg.setAttribute("data-message-type", type);
+
+    let spanHorario = document.createElement("span");
+    spanHorario.classList.add("mensagem__horario");
+    spanHorario.innerHTML = `(${time})`;
+    divMsg.appendChild(spanHorario);
+    
+    let spanMsgCanal = document.createElement("span");
+    spanMsgCanal.classList.add("mensagem__canal");
+    spanMsgCanal.innerHTML = type === "status"? `<b>${from}</b> ${text}` : `<b>${from}</b> para <b>${to}</b>:`;
+    divMsg.appendChild(spanMsgCanal);
+
+    if (type === "private_message" || type === "message") {
+        let pText = document.createElement("p");
+        pText.innerHTML = text;
+        divMsg.appendChild(pText);
+    }
+
+    container.appendChild(divMsg);
 }

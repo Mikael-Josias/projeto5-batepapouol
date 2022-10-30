@@ -1,5 +1,5 @@
 
-.mensagem--normal, .mensagem--status, .mensagem--reservado{
+.mensagem--message, .mensagem--status, .mensagem--private_message{
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -12,7 +12,7 @@
     width: 100%;
 }
 
-.mensagem--normal{
+.mensagem--message{
     background-color: var(--clr-bg-msg-normal);
 }
 
@@ -20,6 +20,6 @@
     background-color: var(--clr-bg-msg-status);
 }
 
-.mensagem--reservado{
+.mensagem--private_message{
     background-color: var(--clr-bg-msg-reservado);
 }

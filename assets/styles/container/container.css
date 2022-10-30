@@ -8,6 +8,8 @@
     background-color: var(--clr-bg-msg-container);
     padding-top: 2.6rem;
 
+    overflow: scroll;
+
     height: calc(100% - 16rem);
     width: 100%;
 }

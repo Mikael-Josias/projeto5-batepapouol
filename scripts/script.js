@@ -123,8 +123,19 @@ function montarMensagem({from, text, time, to, type}){
         }
     }
 
+    // Only shows if it's public or specified to user.
     if ((type === "message" || type === "status") && (to === usuario.name || to === "Todos")) {
     
         container.appendChild(divMsg);   
     }
 }
+
+document.querySelector("#btnEnviar").addEventListener("click", () => {
+    const inputMensagem = document.querySelector("#inputMensagem");
+
+    if (verificarInput(inputMensagem)) {
+        
+        enviarMensagem({text: inputMensagem.value, type: "message"});
+        inputMensagem.value = "";
+    }
+});

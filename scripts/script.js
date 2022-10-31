@@ -129,7 +129,7 @@ function montarMensagem({from, text, time, to, type}){
     }
 
     // Only shows if it's public or specified to user.
-    if ((type === "message" || type === "status") && (to === usuario.name || to === "Todos")) {
+    if (type !== "private_message" || (to === usuario.name || to === "Todos")) {
     
         container.appendChild(divMsg);   
     }

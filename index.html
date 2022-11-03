@@ -34,7 +34,7 @@
         <img src="./assets/img/logo.png" alt="Logo Bate papo UOL"/>
 
         <div class="cabecalho__pessoas">
-            <ion-icon name="people"></ion-icon>
+            <ion-icon name="people" data-test="open-participants"></ion-icon>
         </div>
     </header>
 
@@ -44,10 +44,10 @@
 
     <footer class="rodape">
         <div class="rodape__input-box">
-            <input id="inputMensagem" type="text" placeholder="Escreva aqui..." maxlength="250"/>
+            <input id="inputMensagem" type="text" placeholder="Escreva aqui..." maxlength="250" data-test="input-message"/>
         </div>
         <div class="rodape__enviar">
-            <ion-icon id="btnEnviar" name="paper-plane-outline"></ion-icon>
+            <ion-icon id="btnEnviar" name="paper-plane-outline" data-test="send-message"></ion-icon>
         </div>
     </footer>
     
@@ -55,8 +55,8 @@
         <img src="./assets/img/logo.svg" alt="Logo Bate papo UOL"/>
 
         <div class="login__input-box">
-            <input id="inputUser" type="text" placeholder="Digite seu nome" maxlength="15"/>
-            <button class="login__entrar">Entrar</button>
+            <input id="inputUser" type="text" placeholder="Digite seu nome" maxlength="15" data-test="input-name"/>
+            <button class="login__entrar" data-test="send-name">Entrar</button>
         </div>
     </section>
 

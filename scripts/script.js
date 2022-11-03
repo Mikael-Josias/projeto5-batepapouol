@@ -108,6 +108,7 @@ function montarMensagem({from, text, time, to, type}){
     let divMsg = document.createElement("div");
     divMsg.classList.add(`mensagem--${type}`);
     divMsg.setAttribute("data-message-type", type);
+    divMsg.setAttribute("data-test", "message");
 
     let spanHorario = document.createElement("span");
     spanHorario.classList.add("mensagem__horario");
